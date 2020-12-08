@@ -1,0 +1,144 @@
+@import "variables";
+@import "breakpoints";
+@import "button";
+@import "learning-resource-card";
+@import "learning-resource-icon";
+@import "card";
+@import "search-filter";
+
+.search-nav {
+  background-color: transparent;
+  border: initial;
+
+  &.active {
+    font-weight: bold;
+  }
+
+  font-size: 20px;
+  text-decoration: none !important;
+}
+
+.search-box {
+  .search-box-inner {
+    max-width: 800px;
+
+    .search-input-wrapper {
+      max-width: 580px;
+    }
+  }
+}
+
+form.search-box {
+  input {
+    border: 1px solid $border-light-color;
+    height: 60px;
+
+    &::placeholder {
+      line-height: revert !important;
+    }
+  }
+
+  // using a button on home page, to avoid JS
+  button {
+    background: none;
+    border: none;
+  }
+
+  i.material-icons,
+  button {
+    position: absolute;
+    top: 29%;
+    left: 15px;
+    color: $font-gray-mid;
+    cursor: pointer;
+  }
+}
+
+.search-page {
+  .search-results {
+    max-width: 800px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .no-results-found {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+  }
+
+  .suggestions {
+    justify-content: center;
+    margin: 0;
+    font-style: italic;
+
+    a.suggestion {
+      text-decoration: underline;
+      color: $link-blue;
+      cursor: pointer;
+    }
+  }
+}
+
+.search-toggle {
+  margin-left: -15px;
+}
+
+.search-filter-drawer-open {
+  position: fixed;
+  top: 0px;
+  height: 100%;
+  left: 0;
+  background: white;
+  width: 100%;
+  overflow: scroll;
+  z-index: 1;
+
+  .contents {
+    margin: 0 20px;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: flex-end;
+
+    i {
+      margin-right: 18px;
+      margin-top: 18px;
+      font-size: 33px;
+      cursor: pointer;
+    }
+  }
+
+  .apply-filters {
+    margin: 25px;
+
+    button {
+      width: 100%;
+      font-size: 20px;
+    }
+  }
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+
+  i.material-icons {
+    font-size: 36px;
+  }
+}
+
+.listitem {
+  .topic-link {
+    float: left;
+    white-space: nowrap;
+    text-decoration: underline !important;
+  }
+}
