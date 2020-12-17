@@ -411,3 +411,68 @@ $maxwidth: 1280px;
 .sponsors {
   max-width: $max-content-width;
 }
+
+.testimonials {
+  max-width: $maxwidth;
+
+  .header {
+    font-size: 28px;
+    line-height: 34px;
+
+    .orange {
+      color: $orange;
+    }
+  }
+
+  .testimonial {
+    height: 280px;
+    width: 280px;
+    color: white;
+    background-size: cover;
+
+    .name {
+      font-size: 20px;
+    }
+
+    .occupation-location {
+      font-size: 18px;
+    }
+
+    .on-hover {
+      display: none;
+    }
+
+    .name-occ {
+      .name {
+        font-size: 16px;
+      }
+
+      .occupation-location {
+        font-size: 14px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .name,
+      .occupation-location {
+        white-space: nowrap;
+      }
+    }
+
+    .leadquote {
+      text-size: 14px;
+    }
+
+    &:hover {
+      justify-content: flex-start !important;
+
+      > :not(.on-hover) {
+        display: none;
+      }
+
+      .on-hover {
+        display: flex;
+      }
+    }
+  }
+}
