@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint src",
     "start": "run-p start:**",
-    "start:hugo": "hugo server -s site -p 3000 --bind 0.0.0.0",
+    "start:hugo": "hugo server -s site -p 3000 --bind 0.0.0.0 --renderToDisk",
     "start:webpack": "webpack-dev-server --config src/webpack/webpack.dev.js --hot --host 0.0.0.0",
     "prebuild": "rimraf dist",
     "build": "npm run build:webpack && npm run build:hugo && npm run build:githash",
