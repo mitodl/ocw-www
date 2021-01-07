@@ -1,6 +1,6 @@
 button.blue-btn,
 a.blue-btn {
-  background-color: $course-blue;
+  background-color: $blue;
   color: white;
   margin: 0 10px 5px 0;
   padding: 9px 36px;
@@ -13,7 +13,7 @@ a.blue-btn {
 }
 
 button.blue-btn.outlined {
-  border: 1px solid $course-blue;
+  border: 1px solid $blue;
   background: white;
   color: black;
   display: flex;
@@ -22,8 +22,8 @@ button.blue-btn.outlined {
   align-items: center;
 
   &:enabled:hover {
-    border-color: $course-blue;
-    background: $course-blue;
+    border-color: $blue;
+    background: $blue;
     color: white;
   }
 

@@ -7,35 +7,7 @@ $spacer6: map-get($spacers, 6);
 $spacer7: map-get($spacers, 7);
 $spacer8: map-get($spacers, 8);
 
-.search-header {
-  .main-header {
-    @include media-breakpoint-down(md) {
-      padding: $spacer4 0;
-    }
-
-    @include media-breakpoint-up(lg) {
-      padding: $spacer7 0;
-    }
-  }
-
-  @include media-breakpoint-down(md) {
-    padding: 0 $spacer3;
-  }
-
-  .search-box {
-    @include media-breakpoint-down(md) {
-      width: 100%;
-    }
-
-    @include media-breakpoint-up(lg) {
-      width: 445px;
-    }
-
-    div {
-      padding: 0;
-    }
-  }
-}
+$searchbox-height: 50px;
 
 .home-banner {
   background-size: cover;
@@ -63,11 +35,88 @@ $spacer8: map-get($spacers, 8);
       flex-direction: column;
     }
 
-    .search-box-wrapper {
+    .first-column {
       max-width: 550px;
       width: 96%;
-      position: relative;
       flex-shrink: 2;
+
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+
+      .discover {
+        color: white;
+        font-size: 16px;
+      }
+
+      div {
+        padding: 0;
+      }
+
+      .search-box-wrapper {
+        input,
+        button,
+        a {
+          height: $searchbox-height;
+        }
+
+        button,
+        a {
+          font-size: 16px;
+          border: none;
+        }
+
+        .home-search-box {
+          flex-grow: 2;
+        }
+
+        input {
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+          border: none;
+        }
+
+        button.submit {
+          background-color: $blue;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        .or {
+          width: 50px;
+          color: white;
+          text-align: center;
+          font-size: 14px;
+        }
+
+        a.explore {
+          background-color: $highlight-red;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          color: white;
+        }
+      }
+
+      .new-or-educator {
+        background-color: rgba(0, 0, 0, 0.85);
+        opacity: 0.81;
+
+        .option:first-child {
+          border-right: 1px solid white;
+        }
+
+        span {
+          color: white;
+          font-size: 16px;
+        }
+
+        a {
+          text-decoration: underline;
+          color: $link-blue;
+          font-size: 16px;
+        }
+      }
     }
 
     .unlock {
@@ -76,9 +125,9 @@ $spacer8: map-get($spacers, 8);
       flex-shrink: 0;
 
       .unlocking {
-        font-size: 35px;
+        font-size: 28px;
         text-transform: uppercase;
-        line-height: 1.1;
+        line-height: 40px;
 
         @include media-breakpoint-down(sm) {
           font-size: 20px;
@@ -86,8 +135,8 @@ $spacer8: map-get($spacers, 8);
       }
 
       .free {
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 16px;
+        line-height: 19px;
 
         @include media-breakpoint-down(sm) {
           font-size: 16px;
@@ -100,6 +149,7 @@ $spacer8: map-get($spacers, 8);
         text-transform: uppercase;
         font-size: 15px;
         align-self: flex-end;
+        padding-top: 10px;
       }
     }
   }
@@ -165,7 +215,7 @@ $spacer8: map-get($spacers, 8);
 $maxwidth: 1280px;
 
 .social-cards-wrapper {
-  background-color: $course-blue;
+  background-color: $blue;
 }
 
 .social-cards {
@@ -251,7 +301,9 @@ $maxwidth: 1280px;
 
     .course-card {
       border: 1px solid $border-gray;
+
       $radius: 10px;
+
       border-radius: $radius;
       height: 381px;
       width: 100%;
