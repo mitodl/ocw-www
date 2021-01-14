@@ -54,6 +54,7 @@
     </div>
   </div>
 </div>
+{{ partial "promo-carousel.html" . }}
 <div class="home-page-content" style="background-image: url(/images/homepage_bg.png);">
   {{ $pages := .Site.Pages.ByPublishDate.Reverse }}
   {{ $coursePages := where $pages "Type" "==" "course" }}

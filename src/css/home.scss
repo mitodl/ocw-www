@@ -560,3 +560,80 @@ $maxwidth: 1280px;
     font-size: 16px;
   }
 }
+
+$promo-carousel-height: 200px;
+
+.promo-carousel {
+  max-height: $promo-carousel-height;
+  margin-bottom: 30px;
+
+  .carousel-indicators {
+    margin-bottom: 0;
+    bottom: -30px;
+
+    li {
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border: none;
+      background-color: #dee2e6;
+    }
+  }
+
+  .carousel-content {
+    max-width: 900px;
+    max-height: $promo-carousel-height;
+
+    .img-container {
+      position: relative;
+      width: 30%;
+      max-height: $promo-carousel-height;
+
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
+
+      &::after {
+        display: block;
+        content: "";
+
+        /* 16:9 aspect ratio */
+        padding-bottom: 56.25%;
+      }
+
+      img {
+        /* Image should match parent box size */
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .promo-info {
+      width: 70%;
+
+      @include media-breakpoint-down(sm) {
+        h2 {
+          font-size: 20px;
+        }
+
+        h3 {
+          font-size: 18px;
+        }
+      }
+
+      @include media-breakpoint-down(xs) {
+        width: 100%;
+
+        a.orange-link {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

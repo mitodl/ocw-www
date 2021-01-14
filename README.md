@@ -25,3 +25,17 @@ the filename of `firstname-lastname.md` will allow hugo to automatically pull
 the testimonial student's name out. Once you run the command there will be a
 new file in `site/content/testimonials/` with some placeholder content. Edit
 that file to add the content for that student.
+
+## Homepage Promo Carousel
+
+These are checked into the repo, stored as Markdown files managed by Hugo. To
+create a new one you can use `hugo new` like this:
+
+```
+hugo -s site new promos/filename.md
+```
+
+You'll then also need to check an image file into
+`site/static/images/promo-carousel/` and add it to the front matter in the file
+you just created, alongside the URL for the promo. You'll also need to set a
+title, subtitle, and link text.

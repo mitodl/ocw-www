@@ -32,3 +32,14 @@ button.blue-btn.outlined {
     color: $medium-gray;
   }
 }
+
+.orange-link {
+  background-color: $orange;
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+
+  &:visited {
+    color: white;
+  }
+}
