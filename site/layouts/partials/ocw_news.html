@@ -1,0 +1,21 @@
+<div class="ocw-news mx-auto container">
+    <h3><span class="ocw">OCW</span> News</h3>
+    <div class="d-grid items-row">
+        {{- $newsItems := getJSON (print (strings.TrimSuffix "/" (getenv "OCW_STUDIO_BASE_URL")) "/api/news/") -}}
+        {{ if $newsItems }}
+            {{- range $index, $item := (first 4 $newsItems.items) -}}
+            <div class="item item-{{ $index }}"
+                 style="background: linear-gradient(to bottom, transparent, #777777), url({{ $item.image }})">
+                <a href="{{ $item.link.text }}" class="py-2 px-3 text-white text-decoration-none">
+                    {{ $item.title.text }}
+                </a>
+            </div>
+            {{ end }}
+        {{ end }}
+    </div>
+    <div class="d-flex py-4">
+        <div class="ml-auto">
+            <a class="view-all-news-link" href="https://www.ocw-openmatters.org/">View All News Stories</a>
+        </div>
+    </div>
+</div>
