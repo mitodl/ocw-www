@@ -33,9 +33,13 @@ jobs:
         run: npm run test
 
       - name: Webpack build
-        run: npm run build
-        env:
-          OCW_STUDIO_BASE_URL: "https://example.com"
+        run: |
+          export TMP=$(mktemp)
+          echo 'ignoreErrors = ["error-remote-getjson"]' > $TMP
+          cat site/config.toml >> $TMP
+          rm site/config.toml
+          mv $TMP site/config.toml
+          npm run build
 
       - name: Code formatting
         run: npm run fmt:check

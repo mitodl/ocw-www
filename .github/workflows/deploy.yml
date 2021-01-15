@@ -30,7 +30,13 @@ jobs:
         run: yarn install --frozen-lockfile --ignore-engines --prefer-offline
 
       - name: build site
-        run: npm run build
+        run: |
+          export TMP=$(mktemp)
+          echo 'ignoreErrors = ["error-remote-getjson"]' > $TMP
+          cat site/config.toml >> $TMP
+          rm site/config.toml
+          mv $TMP site/config.toml
+          npm run build
 
       - name: Deploy PR Preview to Netlify
         uses: nwtgck/actions-netlify@v1.1
@@ -89,7 +95,7 @@ jobs:
           body=$(echo '${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}' | node util/formatLighthouseComment.js)
           body="${body//'%'/'%25'}"
           body="${body//$'\n'/'%0A'}"
-          body="${body//$'\r'/'%0D'}" 
+          body="${body//$'\r'/'%0D'}"
           echo ::set-output name=body::$body
 
       - name: Find Comment
