@@ -59,7 +59,6 @@
   {{ $coursePages := where $pages "Type" "==" "course" }}
   {{ $childPages := where $coursePages ".Params.layout" "==" "course_home" }}
   {{ partial "home_course_cards.html" $childPages }}
-  {{ partial "ocw_news.html" . }}
   <div class="beta-dialog bg-dark-gray px-8 py-4 d-none">
     <h2>Next Generation OpenCourseWare</h2>
     <p>
@@ -100,6 +99,7 @@
       </div>
     </div>
   </div>
+  {{ partial "ocw_news.html" . }}
   {{ partial "home_testimonials.html" . }}
   <div class="social-cards-wrapper">
     <div class="social-cards d-flex justify-content-center container w-100">
