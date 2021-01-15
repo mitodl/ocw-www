@@ -3,13 +3,23 @@
 ## Running the site locally
 
 #### Dependencies
-- If running for the first time, or if dependencies have changed, install dependencies: `yarn install`
-- This site requires a running instance of `ocw-studio` (the [repo](https://github.com/mitodl/ocw-studio) has 
-  instructions for running this locally).
+
+- If running for the first time, or if dependencies have changed, install
+  dependencies: `yarn install`
+- This site requires a running instance of `ocw-studio` for some functionality
+  (the [repo](https://github.com/mitodl/ocw-studio) has instructions for
+  running this locally).
+
+#### environment variables
+
+For development you'll need to set a few environment variables. The
+`.env.example` file has example values for `SEARCH_API_URL` and
+`OCW_STUDIO_BASE_URL`, set those to the URLs where you run those services.
 
 #### Run the website
+
 ```bash
-OCW_STUDIO_BASE_URL=http://localhost:8043 npm start
+npm start
 ```
 
 ## Testimonials
