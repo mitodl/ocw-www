@@ -15,11 +15,19 @@ $searchbox-height: 50px;
   height: 500px;
 
   @include media-breakpoint-down(lg) {
-    height: 400px;
+    height: 550px;
+  }
+
+  @include media-breakpoint-down(md) {
+    height: 480px;
   }
 
   @include media-breakpoint-down(sm) {
-    height: 250px;
+    height: 450px;
+  }
+
+  @include media-breakpoint-down(xs) {
+    height: 530px;
   }
 
   .banner-contents-container {
@@ -131,6 +139,7 @@ $searchbox-height: 50px;
 
         @include media-breakpoint-down(sm) {
           font-size: 20px;
+          line-height: 32px;
         }
       }
 
