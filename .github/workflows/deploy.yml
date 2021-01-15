@@ -37,6 +37,9 @@ jobs:
           rm site/config.toml
           mv $TMP site/config.toml
           npm run build
+        env:
+          OCW_STUDIO_BASE_URL: ${{ secrets.OCW_STUDIO_BASE_URL }}
+          SEARCH_API_URL: ${{ secrets.SEARCH_API_URL }}
 
       - name: Deploy PR Preview to Netlify
         uses: nwtgck/actions-netlify@v1.1
@@ -66,7 +69,6 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          OCW_STUDIO_BASE_URL: ${{ secrets.OCW_STUDIO_BASE_URL }}
 
   lighthouse:
     needs: build
