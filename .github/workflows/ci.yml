@@ -33,7 +33,13 @@ jobs:
         run: npm run test
 
       - name: Webpack build
-        run: npm run build
+        run: |
+          export TMP=$(mktemp)
+          echo 'ignoreErrors = ["error-remote-getjson"]' > $TMP
+          cat site/config.toml >> $TMP
+          rm site/config.toml
+          mv $TMP site/config.toml
+          npm run build
 
       - name: Code formatting
         run: npm run fmt:check

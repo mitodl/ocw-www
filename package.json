@@ -71,7 +71,7 @@
     "fuse.js": "^6.4.1",
     "gulp": "^4.0.2",
     "hammerjs": "2.0.7",
-    "hugo-bin": "*",
+    "hugo-bin": "^0.68.0",
     "imagesloaded": "4.1.1",
     "imports-loader": "^0.8.0",
     "isomorphic-fetch": "^2.2.1",
