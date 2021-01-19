@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.6.1
+Version 1.6.1 (Released January 19, 2021)
 -------------
 
 - add promo carousel to the homepage
