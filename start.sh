@@ -8,5 +8,4 @@ if test -f "$ENV_FILE"; then
     export $(cat .env | xargs)
 fi
 
-npm run start:hugo
-npm run start:webpack
+npm run startp
