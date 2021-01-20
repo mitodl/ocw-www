@@ -2,12 +2,9 @@
 {{ $testimonials := where $pages "Type" "==" "testimonials" }}
 <div>
   <div class="testimonials mt-3 mx-auto w-100">
-    <div class="header">
-      <span class="orange font-weight-bold">
-        OpenCourseWare
-      </span>
-      Testimonies
-    </div>
+    <h2 class="branded">
+      <span>OpenCourseWare</span> Testimonies
+    </h2>
     <div class="d-flex flex-row justify-content-between" >
       {{ range $testimonial := $testimonials }}
       <div

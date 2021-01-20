@@ -1,27 +1,18 @@
 {{- $courseItems := getJSON (print (strings.TrimSuffix "/" (getenv "OCW_STUDIO_BASE_URL")) "/api/websites/?type=course") -}}
 {{ if $courseItems.results }}
-    <div class="new-courses">
-        <div class="course-cards container mt-3 mx-auto w-100">
-             {{ $breakdowns := (dict "xs-sm" (dict "size" 1 "class" "d-flex d-md-none") "md" (dict "size" 2 "class" "d-none d-md-flex d-lg-none") "lg" (dict "size" 3 "class" "d-none d-lg-flex d-xl-none") "xl" (dict "size" 4 "class" "d-none d-xl-flex")) }}
+        <div class="new-courses course-cards container mt-3 mx-auto w-100">
+            {{ $breakdowns := (dict "xs-sm" (dict "size" 1 "class" "d-flex d-md-none") "md" (dict "size" 2 "class" "d-none d-md-flex d-lg-none") "lg" (dict "size" 3 "class" "d-none d-lg-flex d-xl-none") "xl" (dict "size" 4 "class" "d-none d-xl-flex")) }}
             <!-- list adapted from https://getbootstrap.com/docs/4.0/utilities/display/#hiding-elements -->
             {{ range $breakpoint, $carouselInfo := $breakdowns }}
                 {{ $itemsInCarousel := index $carouselInfo "size" }}
                 {{ $breakpointVisibilityClass := index $carouselInfo "class" }}
                 {{ $isMobile := (eq $itemsInCarousel 1) }}
+                {{ $carouselId := (printf "new-course-carousel-%v" $breakpoint) }}
                 <div class="{{ $breakpointVisibilityClass }}">
-                    <div id="carousel-{{ $breakpoint }}" class="carousel slide">
+                    <div id="{{ $carouselId }}" class="carousel slide">
                         <div class="carousel-header d-flex flex-row justify-content-between font-weight-bold text-uppercase">
-                            <h3 class="new-courses-title">New Courses</h3>
-                            <h4 class="d-flex">
-                                <a href="#carousel-{{ $breakpoint }}" role="button" data-slide="prev" class="bg-white prev">
-                                    <span class="material-icons">keyboard_arrow_left</span>
-                                    Previous
-                                </a>
-                                <a href="#carousel-{{ $breakpoint }}" role="button" data-slide="next" class="bg-white next">
-                                    Next
-                                    <span class="material-icons">keyboard_arrow_right</span>
-                                </a>
-                            </h4>
+                            <h3>New Courses</h3>
+                            {{ partial "carousel_controls.html" $carouselId }}
                         </div>
                         <div class="carousel-inner d-flex {{ if not $isMobile }}container{{ end }} mt-2 px-0">
                             {{- range $index, $courseItem := (first 10 $courseItems.results) -}}
@@ -33,7 +24,7 @@
                                     {{ if eq $modulo 0 }}
                                         <div class="carousel-item {{ if not $isMobile }}row{{end}} {{ if eq $group 0 }}active{{ end }}">
                                     {{ end }}
-                                            <div class="course-card-wrapper {{ if not $isMobile }}col-{{ (div 12 $itemsInCarousel) }}{{ end }} w-100 d-flex justify-content-center">
+                                            <div class="item-wrapper {{ if not $isMobile }}col-{{ (div 12 $itemsInCarousel) }}{{ end }} w-100 d-flex justify-content-center">
                                                 <div class="course-card card bg-white">
                                                     <a href="/courses/{{ $courseItem.url_path }}">
                                                       <img src="{{ $courseData.course_image_url }}" alt="Thumbnail for {{ $courseData.course_title }}"/>
@@ -66,5 +57,4 @@
                 </div>
             {{ end }}
         </div>
-    </div>
 {{ end }}

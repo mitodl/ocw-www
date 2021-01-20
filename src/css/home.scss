@@ -221,14 +221,12 @@ $searchbox-height: 50px;
   }
 }
 
-$maxwidth: 1280px;
-
 .social-cards-wrapper {
   background-color: $blue;
 }
 
 .social-cards {
-  max-width: $maxwidth;
+  max-width: $max-home-width;
 
   @include media-breakpoint-down(md) {
     padding: 0;
@@ -291,127 +289,42 @@ $maxwidth: 1280px;
 }
 
 .course-cards {
-  max-width: $maxwidth;
+  max-width: $max-home-width;
 
   a {
     text-decoration: none;
   }
 
-  .course-card-wrapper {
-    padding: 0 10px;
+  .course-card {
+    border: 1px solid $border-gray;
 
-    &:first-child {
-      padding-left: 0;
-    }
+    $radius: 10px;
 
-    &:last-child {
-      padding-right: 0;
-    }
-
-    .course-card {
-      border: 1px solid $border-gray;
-
-      $radius: 10px;
-
-      border-radius: $radius;
-      height: 381px;
-      width: 100%;
-
-      h5 {
-        font-size: 16px;
-      }
-
-      img {
-        width: 100%;
-        object-fit: cover;
-        height: 186px;
-        border-radius: $radius $radius 0 0;
-      }
-
-      .course-level {
-        text-transform: uppercase;
-        color: $font-gray-mid;
-      }
-
-      .course-card-content {
-        font-size: 12px;
-
-        .card-label {
-          color: $give-heart-gray;
-        }
-      }
-    }
-  }
-
-  .carousel-item.active,
-  .carousel-item-next,
-  .carousel-item-prev {
-    // this is display: block in bootstrap but we want to have cards laid out properly
-    display: flex;
-  }
-
-  .carousel {
-    max-width: $maxwidth;
+    border-radius: $radius;
+    height: 381px;
     width: 100%;
 
-    .carousel-inner {
-      max-width: $maxwidth;
-      width: 100%;
-
-      .carousel-item {
-        margin-left: 0;
-
-        @include media-breakpoint-up(md) {
-          padding: 0 10px;
-        }
-      }
+    h5 {
+      font-size: 16px;
     }
 
-    .carousel-header {
-      max-width: $maxwidth;
-      margin: 0;
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 186px;
+      border-radius: $radius $radius 0 0;
+    }
 
-      @include media-breakpoint-up(md) {
-        padding: 0 10px;
-      }
+    .course-level {
+      text-transform: uppercase;
+      color: $font-gray-mid;
+    }
 
-      @include media-breakpoint-down(xs) {
-        h3 {
-          font-size: 14px;
-        }
+    .course-card-content {
+      font-size: 12px;
 
-        h4 {
-          font-size: 12px;
-        }
-      }
-
-      .new-courses-title {
-        padding: 12px 0 6px 0;
-      }
-
-      a {
-        border: 1px solid $border-dark-color;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        margin-left: 8px;
-        padding: 6px;
-        font-size: 16px;
-        height: 38px;
-
-        span {
-          display: inline;
-        }
-
-        @include media-breakpoint-down(xs) {
-          &.next {
-            padding: 6px 2px 6px 10px;
-          }
-
-          &.prev {
-            padding: 6px 10px 6px 2px;
-          }
-        }
+      .card-label {
+        color: $give-heart-gray;
       }
     }
   }
@@ -422,16 +335,7 @@ $maxwidth: 1280px;
 }
 
 .testimonials {
-  max-width: $maxwidth;
-
-  .header {
-    font-size: 28px;
-    line-height: 34px;
-
-    .orange {
-      color: $orange;
-    }
-  }
+  max-width: $max-home-width;
 
   .testimonial {
     height: 280px;
@@ -487,21 +391,26 @@ $maxwidth: 1280px;
 }
 
 .ocw-news {
-  max-width: $maxwidth;
+  max-width: $max-home-width;
 
-  h3 {
-    font-family: Helvetica, sans-serif;
-    font-weight: 300;
-    font-size: 28px;
-    margin-bottom: 20px;
+  .item {
+    width: 100%;
+    background-size: cover !important;
+    display: flex;
+    align-items: end;
 
-    .ocw {
-      color: $orange;
-      font-weight: 600;
+    a {
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: bold;
     }
   }
 
-  .items-row {
+  .carousel .item {
+    height: 215px;
+  }
+
+  .items-grid {
     height: 375px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -514,17 +423,6 @@ $maxwidth: 1280px;
     }
 
     .item {
-      width: 100%;
-      background-size: cover !important;
-      display: flex;
-      align-items: end;
-
-      a {
-        font-size: 20px;
-        line-height: 24px;
-        font-weight: bold;
-      }
-
       &.item-0 {
         grid-row: 1 / 3;
         grid-column: 1 / 3;
@@ -543,14 +441,6 @@ $maxwidth: 1280px;
       &.item-3 {
         grid-row: 2;
         grid-column: 3 / 5;
-      }
-
-      &.item-1,
-      &.item-2,
-      &.item-3 {
-        @include media-breakpoint-down(md) {
-          display: none;
-        }
       }
     }
   }

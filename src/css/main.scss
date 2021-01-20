@@ -5,6 +5,7 @@
 @import "~offcanvas-bootstrap/src/sass/bootstrap.offcanvas";
 
 @import "breakpoints";
+@import "carousel";
 @import "header";
 @import "home";
 @import "course-nav";
@@ -39,6 +40,40 @@ a {
 
   &:hover {
     color: black;
+  }
+}
+
+h2 {
+  font-size: 28px;
+
+  @include media-breakpoint-down(xs) {
+    font-size: 24px;
+  }
+
+  &.branded {
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+
+    span {
+      color: $orange;
+      font-weight: 600;
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  h2 {
+    font-size: 24px;
+  }
+}
+
+h3 {
+  font-size: 24px;
+}
+
+@include media-breakpoint-down(xs) {
+  h3 {
+    font-size: 18px;
   }
 }
 
