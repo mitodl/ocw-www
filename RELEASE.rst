@@ -1,6 +1,15 @@
 Release Notes
 =============
 
+Version 1.6.2
+-------------
+
+- fix npm start
+- Implemented OCW news carousel in mobile/tablet widths
+- Move beneath give now section
+- Add OCW News to front page
+- update README, always source `.env`
+
 Version 1.6.1 (Released January 19, 2021)
 -------------
 
