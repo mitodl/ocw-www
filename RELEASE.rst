@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.6.2
+Version 1.6.2 (Released January 21, 2021)
 -------------
 
 - fix npm start
