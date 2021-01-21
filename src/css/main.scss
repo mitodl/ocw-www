@@ -130,13 +130,25 @@ h3 {
 
 .large-and-above-only {
   @include media-breakpoint-down(md) {
-    display: none;
+    display: none !important;
   }
 }
 
 .xl-and-above-only {
   @include media-breakpoint-down(lg) {
-    display: none;
+    display: none !important;
+  }
+}
+
+.sm-and-below-only {
+  @include media-breakpoint-up(md) {
+    display: none !important;
+  }
+}
+
+.md-and-above-only {
+  @include media-breakpoint-down(sm) {
+    display: none !important;
   }
 }
 

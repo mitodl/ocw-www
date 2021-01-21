@@ -1,0 +1,23 @@
+{{- $testimonial := . -}}
+<div
+  class="my-3 testimonial d-flex flex-column justify-content-end rounded"
+  style="background-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000000 100%), url({{ $testimonial.Params.image }});"
+>
+  <div class="name font-weight-bold pl-3">
+    {{ $testimonial.Title }}
+  </div>
+  <div class="occupation-location pl-3 pb-2">
+    {{ $testimonial.Params.occupation }} - {{ $testimonial.Params.location }}
+  </div>
+  <div class="name-occ flex flex-row align-items-center pl-3 py-2 w-100 on-hover">
+    <div class="name font-weight-bold pr-2">
+      {{ $testimonial.Title }}
+    </div>
+    <div class="occupation-location">
+      {{ $testimonial.Params.occupation }} - {{ $testimonial.Params.location }}
+    </div>
+  </div>
+  <div class="leadquote on-hover px-3">
+    {{ $testimonial.Params.leadquote }}
+  </div>
+</div>
