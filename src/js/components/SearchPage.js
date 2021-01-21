@@ -65,6 +65,8 @@ export default function SearchPage() {
             isDoubleQuoted(text) ? `"${suggestion}"` : suggestion
           )
         )
+      } else {
+        setSuggestions(null)
       }
 
       setSearchFacets(new Map(Object.entries(newResults.aggregations ?? {})))

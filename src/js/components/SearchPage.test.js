@@ -189,6 +189,7 @@ describe("SearchPage component", () => {
     wrapper.find(".suggestion").simulate("click")
     wrapper.update()
     expect(wrapper.find("SearchBox").prop("value")).toEqual("mathematics")
+    expect(!wrapper.find(".suggestion").exists())
   })
 
   test("should not show suggestion if it is the same as query minus quotes, case", async () => {
