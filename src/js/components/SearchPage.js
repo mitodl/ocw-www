@@ -56,6 +56,7 @@ export default function SearchPage() {
             [
               text
                 .toLowerCase()
+                .trim()
                 .replace(/^"(.*)"$/, "$1")
                 .replace(/[\W]+/g, " ")
                 .trim()

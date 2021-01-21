@@ -194,7 +194,7 @@ describe("SearchPage component", () => {
 
   test("should not show suggestion if it is the same as query minus quotes, case", async () => {
     const parameters = {
-      text: '"Mathematics: Basic Principles!"'
+      text: ' "Mathematics: Basic Principles!" '
     }
     const searchString = serializeSearchParams(parameters)
     const wrapper = await render(searchString)
