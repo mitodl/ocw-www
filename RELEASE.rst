@@ -1,6 +1,14 @@
 Release Notes
 =============
 
+Version 1.6.3
+-------------
+
+- round out mobile display
+- prod deploy
+- remove 'alias' field from the CI deploy
+- fix styling issue with promo carousel
+
 Version 1.6.2 (Released January 21, 2021)
 -------------
 
