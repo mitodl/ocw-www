@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.6.3
+Version 1.6.3 (Released January 22, 2021)
 -------------
 
 - round out mobile display
