@@ -1,13 +1,13 @@
-.carousel-item.active,
-.carousel-item-next,
-.carousel-item-prev {
-  // this is display: block in bootstrap but we want to have cards laid out properly
-  display: flex;
-}
-
-.carousel {
+.carousel:not(.slide) {
   max-width: $max-home-width;
   width: 100%;
+
+  .carousel-item.active,
+  .carousel-item-next,
+  .carousel-item-prev {
+    // this is display: block in bootstrap but we want to have cards laid out properly
+    display: flex;
+  }
 
   .carousel-inner {
     max-width: $max-home-width;
