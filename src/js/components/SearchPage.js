@@ -52,10 +52,22 @@ export default function SearchPage() {
       const { suggest } = newResults
       if (!emptyOrNil(suggest) && !emptyOrNil(text)) {
         setSuggestions(
-          without([text], suggest).map(suggestion =>
+          without(
+            [
+              text
+                .toLowerCase()
+                .trim()
+                .replace(/^"(.*)"$/, "$1")
+                .replace(/[\W]+/g, " ")
+                .trim()
+            ],
+            suggest
+          ).map(suggestion =>
             isDoubleQuoted(text) ? `"${suggestion}"` : suggestion
           )
         )
+      } else {
+        setSuggestions(null)
       }
 
       setSearchFacets(new Map(Object.entries(newResults.aggregations ?? {})))

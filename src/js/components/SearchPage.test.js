@@ -189,6 +189,20 @@ describe("SearchPage component", () => {
     wrapper.find(".suggestion").simulate("click")
     wrapper.update()
     expect(wrapper.find("SearchBox").prop("value")).toEqual("mathematics")
+    expect(!wrapper.find(".suggestion").exists())
+  })
+
+  test("should not show suggestion if it is the same as query minus quotes, case", async () => {
+    const parameters = {
+      text: ' "Mathematics: Basic Principles!" '
+    }
+    const searchString = serializeSearchParams(parameters)
+    const wrapper = await render(searchString)
+    await resolveSearch({
+      suggest: ["mathematics basic principles"]
+    })
+    wrapper.update()
+    expect(!wrapper.find(".suggestions").exists())
   })
 
   it("should show spinner when searching", async () => {
