@@ -11,6 +11,7 @@
 @import "course-nav";
 @import "course-info";
 @import "course-home";
+@import "testimonials";
 @import "drawer";
 @import "pdf";
 @import "video";
@@ -41,6 +42,10 @@ a {
   &:hover {
     color: black;
   }
+}
+
+h1 {
+  font-size: 36px;
 }
 
 h2 {
@@ -75,6 +80,10 @@ h3 {
   h3 {
     font-size: 18px;
   }
+}
+
+.standard-width {
+  max-width: $max-home-width;
 }
 
 .img-link,
@@ -241,12 +250,6 @@ table {
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
-}
-
-.container {
-  @include breakpoint(mobile) {
-    width: 90%;
-  }
 }
 
 .material-icons {

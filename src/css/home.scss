@@ -9,6 +9,19 @@ $spacer8: map-get($spacers, 8);
 
 $searchbox-height: 50px;
 
+.home-page-content {
+  .container {
+    @include breakpoint(mobile) {
+      width: 90%;
+    }
+  }
+}
+
+.view-all-link {
+  color: $blue;
+  font-size: 16px;
+}
+
 .home-banner {
   background-size: cover;
   background-repeat: no-repeat;
@@ -241,8 +254,6 @@ $searchbox-height: 50px;
 }
 
 .social-cards {
-  max-width: $max-home-width;
-
   @include media-breakpoint-down(md) {
     padding: 0;
   }
@@ -304,8 +315,6 @@ $searchbox-height: 50px;
 }
 
 .course-cards {
-  max-width: $max-home-width;
-
   a {
     text-decoration: none;
   }
@@ -349,8 +358,10 @@ $searchbox-height: 50px;
   max-width: $max-content-width;
 }
 
-.testimonials {
-  max-width: $max-home-width;
+.home-testimonials {
+  a.testimonial-link {
+    text-decoration: none;
+  }
 
   .testimonial {
     height: 280px;
@@ -406,8 +417,6 @@ $searchbox-height: 50px;
 }
 
 .ocw-news {
-  max-width: $max-home-width;
-
   .item {
     width: 100%;
     background-size: cover !important;
@@ -458,11 +467,6 @@ $searchbox-height: 50px;
         grid-column: 3 / 5;
       }
     }
-  }
-
-  .view-all-news-link {
-    color: $blue;
-    font-size: 16px;
   }
 }
 
