@@ -8,8 +8,6 @@ image: /images/testimonials/kunle_th.jpg
 leadquote: "Students need to know that these things are available."
 ---
 
-# Kunle Adejumo
-
 Kunle Adejumo is finishing his fourth year of engineering studies at Ahmadu
 Bello University in Zaria, Nigeria. By all rights, he should now be in his
 fifth and final year, but local strikes and instability in Nigeria have added

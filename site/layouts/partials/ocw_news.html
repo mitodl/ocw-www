@@ -1,6 +1,6 @@
 {{- $newsItems := getJSON (print (strings.TrimSuffix "/" (getenv "OCW_STUDIO_BASE_URL")) "/api/news/") -}}
 {{ if $newsItems.items }}
-    <div class="ocw-news container mx-auto w-100">
+    <div class="ocw-news standard-width container mx-auto">
         {{ $breakdowns := (dict "xs-sm" (dict "size" 1 "class" "d-flex d-md-none") "md" (dict "size" 2 "class" "d-none d-md-flex d-lg-none")) }}
         {{ range $breakpoint, $carouselInfo := $breakdowns }}
             {{ $itemsInCarousel := index $carouselInfo "size" }}
@@ -52,7 +52,7 @@
 
         <div class="d-flex py-4">
             <div class="ml-auto">
-                <a class="view-all-news-link" href="https://www.ocw-openmatters.org/">View All News Stories</a>
+                <a class="view-all-link" href="https://www.ocw-openmatters.org/">View All News Stories</a>
             </div>
         </div>
     </div>

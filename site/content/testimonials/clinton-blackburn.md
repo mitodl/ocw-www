@@ -8,8 +8,6 @@ image: /images/testimonials/blackburn_th.jpg
 leadquote: "Through OCW, I am part of a movement to help make education free and available to the world."
 ---
 
-# Clinton Blackburn
-
 In between studying for classes and working at the MIT Computing Help Desk, MIT
 senior Clinton Blackburn volunteers as an ambassador for OCW during his travels
 to Africa.

@@ -8,8 +8,6 @@ image: /images/testimonials/tuhin-bagi-th.jpg
 leadquote: "In school there are times when I don’t completely understand a topic that my teacher is lecturing. After I go to OCW, I understand it properly."
 ---
 
-# Tuhin Bagi
-
 The city of Nasik has long been known as the wine capital of India for its
 plentiful supply of grapes, but more recently it has become a high-tech and
 engineering hub—one of the fastest growing cities in the country. Born and

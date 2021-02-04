@@ -8,8 +8,6 @@ image: /images/testimonials/karamitsou_th.jpg
 leadquote: "I found lecture notes, handouts and slides from presentations, and some problem sets. It helped me a lot."
 ---
 
-# Maria Karamitsou
-
 A fifth-year civil engineering student at Aristotle University of Thessaloniki
 in Greece, Maria Karamitsou spent the summer of 2005 working at an institute of
 seismology, studying earthquake-resistant construction techniques.
