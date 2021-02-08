@@ -1,6 +1,13 @@
 Release Notes
 =============
 
+Version 1.7.0
+-------------
+
+- Added testimonials list and detail pages
+- Google Tag Manager JS and .env variable (#43)
+- Don't show suggestion if it is effectively the same as search text (#36)
+
 Version 1.6.3 (Released January 22, 2021)
 -------------
 
