@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.7.0
+Version 1.7.0 (Released February 09, 2021)
 -------------
 
 - Added testimonials list and detail pages
