@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+Version 1.7.1
+-------------
+
+- Fixed course site variable reference (url_path)
+
 Version 1.7.0 (Released February 09, 2021)
 -------------
 
