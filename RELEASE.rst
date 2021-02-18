@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+Version 1.7.2
+-------------
+
+- Added robots.txt and disallowed crawling on all pages
+
 Version 1.7.1 (Released February 10, 2021)
 -------------
 
