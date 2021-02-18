@@ -3,6 +3,7 @@ languageCode = "en-us"
 languageLang = "en"
 title = "MIT OpenCourseWare"
 relativeURLs = false
+enableRobotsTXT = true
 
 # RSS, categories and tags disabled for an easy start
 # See configuration options for more details:
