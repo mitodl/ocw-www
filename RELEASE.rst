@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+Version 1.8.0
+-------------
+
+- Add legacy contact link for now
+
 Version 1.7.2 (Released February 19, 2021)
 -------------
 
