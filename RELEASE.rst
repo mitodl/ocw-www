@@ -1,6 +1,12 @@
 Release Notes
 =============
 
+Version 1.8.0
+-------------
+
+- remove the coming soon class from contact us
+- Add legacy contact link for now
+
 Version 1.7.2 (Released February 19, 2021)
 -------------
 
