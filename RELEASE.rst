@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.8.0
+Version 1.8.0 (Released March 10, 2021)
 -------------
 
 - remove the coming soon class from contact us
