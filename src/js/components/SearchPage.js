@@ -23,7 +23,7 @@ const COURSE_FACETS = [
   ["level", "Level", false],
   ["topics", "Topics", true],
   ["department_name", "Department", true],
-  ["course_feature_tags", "Feature Tags", true],
+  ["course_feature_tags", "Feature Tags", true]
 ]
 
 // TBD
