@@ -84,7 +84,8 @@ const COURSE_QUERY_FIELDS = [
   "course_id",
   "coursenum^5",
   "offered_by",
-  "department_name"
+  "department_name",
+  "course_feature_tags"
 ]
 const VIDEO_QUERY_FIELDS = [
   "title.english^3",
@@ -457,7 +458,8 @@ export const searchResultToLearningResource = result => ({
   short_url:     result.short_url || null,
   course_id:     result.course_id || null,
   coursenum:     result.coursenum || null,
-  description:   result.short_description || null
+  description:   result.short_description || null,
+  course_feature_tags:  result.course_feature_tags ? result.course_feature_tags : []
 })
 
 export const getCoverImageUrl = result => {
