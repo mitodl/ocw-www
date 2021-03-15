@@ -96,7 +96,8 @@ export const makeCourseResult = () => ({
     [PROFESSIONAL],
     [OPEN_CONTENT, PROFESSIONAL]
   ]),
-  certification: casual.random_element([[], [CERTIFICATE]])
+  certification:       casual.random_element([[], [CERTIFICATE]]),
+  course_feature_tags: [casual.word, casual.word]
 })
 
 export const makeResourceFileResult = () => ({

@@ -140,7 +140,10 @@ describe("SearchPage component", () => {
   test("the user can switch to resource search", async () => {
     const parameters = {
       text:         "Math 101",
-      activeFacets: { topics: ["mathematics"] }
+      activeFacets: {
+        topics:              ["mathematics"],
+        course_feature_tags: ["Exams", "Problem Sets with Solutions"]
+      }
     }
     const searchString = serializeSearchParams(parameters)
     const wrapper = await render(searchString)
