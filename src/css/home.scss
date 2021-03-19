@@ -397,22 +397,6 @@ $searchbox-height: 50px;
         white-space: nowrap;
       }
     }
-
-    .leadquote {
-      text-size: 14px;
-    }
-
-    &:hover {
-      justify-content: flex-start !important;
-
-      > :not(.on-hover) {
-        display: none;
-      }
-
-      .on-hover {
-        display: flex;
-      }
-    }
   }
 }
 
