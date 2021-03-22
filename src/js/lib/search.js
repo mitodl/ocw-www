@@ -84,7 +84,8 @@ const COURSE_QUERY_FIELDS = [
   "course_id",
   "coursenum^5",
   "offered_by",
-  "department_name"
+  "department_name",
+  "course_feature_tags"
 ]
 const VIDEO_QUERY_FIELDS = [
   "title.english^3",
@@ -437,27 +438,30 @@ export const SEARCH_GRID_UI = "grid"
 export const SEARCH_LIST_UI = "list"
 
 export const searchResultToLearningResource = result => ({
-  id:            result.id,
-  title:         result.title,
-  image_src:     result.image_src,
-  object_type:   result.object_type,
-  platform:      "platform" in result ? result.platform : null,
-  topics:        result.topics ? result.topics.map(topic => ({ name: topic })) : [],
-  runs:          "runs" in result ? result.runs : [],
-  level:         !emptyOrNil(result.runs) ? result.runs[0].level : null,
-  instructors:   !emptyOrNil(result.runs) ? result.runs[0].instructors : [],
-  department:    result.department,
-  audience:      result.audience,
-  certification: result.certification,
-  content_title: result.content_title,
-  run_title:     result.run_title || null,
-  run_slug:      result.run_slug || null,
-  content_type:  result.content_type || null,
-  url:           getResultUrl(result) || null,
-  short_url:     result.short_url || null,
-  course_id:     result.course_id || null,
-  coursenum:     result.coursenum || null,
-  description:   result.short_description || null
+  id:                  result.id,
+  title:               result.title,
+  image_src:           result.image_src,
+  object_type:         result.object_type,
+  platform:            "platform" in result ? result.platform : null,
+  topics:              result.topics ? result.topics.map(topic => ({ name: topic })) : [],
+  runs:                "runs" in result ? result.runs : [],
+  level:               !emptyOrNil(result.runs) ? result.runs[0].level : null,
+  instructors:         !emptyOrNil(result.runs) ? result.runs[0].instructors : [],
+  department:          result.department,
+  audience:            result.audience,
+  certification:       result.certification,
+  content_title:       result.content_title,
+  run_title:           result.run_title || null,
+  run_slug:            result.run_slug || null,
+  content_type:        result.content_type || null,
+  url:                 getResultUrl(result) || null,
+  short_url:           result.short_url || null,
+  course_id:           result.course_id || null,
+  coursenum:           result.coursenum || null,
+  description:         result.short_description || null,
+  course_feature_tags: result.course_feature_tags ?
+    result.course_feature_tags :
+    []
 })
 
 export const getCoverImageUrl = result => {

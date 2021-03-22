@@ -140,7 +140,10 @@ describe("SearchPage component", () => {
   test("the user can switch to resource search", async () => {
     const parameters = {
       text:         "Math 101",
-      activeFacets: { topics: ["mathematics"] }
+      activeFacets: {
+        topics:              ["mathematics"],
+        course_feature_tags: ["Exams", "Problem Sets with Solutions"]
+      }
     }
     const searchString = serializeSearchParams(parameters)
     const wrapper = await render(searchString)
@@ -270,14 +273,17 @@ describe("SearchPage component", () => {
     expect(wrapper.find("Loading").exists()).toBeFalsy()
   })
 
-  test("should render a FilterableFacet for topic, department", async () => {
+  test("should render a FilterableFacet for topic, course features, department", async () => {
     const wrapper = await render()
     await resolveSearch()
     wrapper.update()
-    const [topic, department] = wrapper.find(FilterableFacet)
+    const [topic, features, department] = wrapper.find(FilterableFacet)
     expect(topic.props.name).toEqual("topics")
     expect(topic.props.title).toEqual("Topics")
     expect(topic.props.currentlySelected).toEqual([])
+    expect(features.props.name).toEqual("course_feature_tags")
+    expect(features.props.title).toEqual("Course Features")
+    expect(features.props.currentlySelected).toEqual([])
     expect(department.props.name).toEqual("department_name")
     expect(department.props.title).toEqual("Department")
     expect(department.props.currentlySelected).toEqual([])
