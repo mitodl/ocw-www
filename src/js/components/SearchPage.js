@@ -154,25 +154,44 @@ export default function SearchPage() {
 
   return (
     <div className="search-page w-100">
-      <div className="search-box py-3 py-sm-5 py-md-7">
-        <div className="search-box-inner col-12 col-lg-8 col-xl-8  mx-auto d-flex flex-column align-items-center">
-          <h1 className="mb-3 mb-sm-5 mb-md-7">Explore OpenCourseWare</h1>
-          <div className="w-100 d-flex flex-column align-items-center search-input-wrapper">
-            <span className="align-self-start pb-1 pb-sm-3">SEARCH</span>
-            <div className="w-100 position-relative">
-              <SearchBox
-                value={text}
-                onChange={updateText}
-                onSubmit={onSubmit}
-              />
+      <div className="container">
+        <div className="search-box py-sm-5 py-md-7 py-lg-5 row">
+          <div className="col-lg-3" />
+          <div className="col-lg-6 search-box-inner d-flex flex-column align-items-center">
+            <h1 className="mb-3 mb-sm-5 mb-md-7">Explore OpenCourseWare</h1>
+            <div className="w-100 d-flex flex-column align-items-center search-input-wrapper">
+              <span className="align-self-start pb-1 pb-sm-3 search-box-description px-2">
+                Search for courses, materials & teaching resources
+              </span>
+              <div className="w-100">
+                <SearchBox
+                  value={text}
+                  onChange={updateText}
+                  onSubmit={onSubmit}
+                />
+              </div>
             </div>
           </div>
+          <div className="col-lg-3" />
         </div>
-      </div>
-      <div className="container">
         <div className="row">
-          {isResourceSearch ? null : <div className="col-3 mt-3 mt-lg-6"></div>}
-          <div className="search-results col-12 col-lg-8 col-xl-8 mt-3 mt-lg-6 mx-auto px-0">
+          {isResourceSearch ? (
+            <div className="col-12 col-lg-3" />
+          ) : (
+            <SearchFilterDrawer
+              facetMap={facetMap}
+              facetOptions={facetOptions}
+              activeFacets={activeFacets}
+              onUpdateFacets={onUpdateFacets}
+              clearAllFilters={clearAllFilters}
+              toggleFacet={toggleFacet}
+            />
+          )}
+          <div className="col-12 col-lg-6 results-total pb-2">
+            <span className="pl-2">
+              {completedInitialLoad ? `${total} Results` : null}
+            </span>
+            <hr />
             <div
               className={`search-toggle ${
                 isResourceSearch ? "nofacet" : "facet"
@@ -206,13 +225,12 @@ export default function SearchPage() {
                   ?
                 </div>
               ) : null}
-              <ul className="nav">
+              <ul className="nav pl-2 pb-2">
                 <li className="nav-item">
                   <button
                     className={`nav-link search-nav ${
                       isResourceSearch ? "" : "active"
                     }`}
-                    href="#"
                     onClick={toggleResourceSearch(false)}
                   >
                     Courses
@@ -223,7 +241,6 @@ export default function SearchPage() {
                     className={`nav-link search-nav ${
                       isResourceSearch ? "active" : ""
                     }`}
-                    href="#"
                     onClick={toggleResourceSearch(true)}
                   >
                     Resources
@@ -231,20 +248,6 @@ export default function SearchPage() {
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
-        <div className="row">
-          {isResourceSearch ? null : (
-            <SearchFilterDrawer
-              facetMap={facetMap}
-              facetOptions={facetOptions}
-              activeFacets={activeFacets}
-              onUpdateFacets={onUpdateFacets}
-              clearAllFilters={clearAllFilters}
-              toggleFacet={toggleFacet}
-            />
-          )}
-          <div className="search-results col-12 col-lg-8 col-xl-8 mt-3 mx-auto px-0">
             <InfiniteScroll
               hasMore={from + SEARCH_PAGE_SIZE < total}
               loadMore={loadMore}
@@ -270,6 +273,7 @@ export default function SearchPage() {
               )}
             </InfiniteScroll>
           </div>
+          <div className="col-12 col-lg-3" />
         </div>
       </div>
     </div>

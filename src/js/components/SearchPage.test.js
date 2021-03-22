@@ -109,10 +109,7 @@ describe("SearchPage component", () => {
       .at(0)
       .simulate("change", { target: { value: "New Search Text" } })
     await act(async () => {
-      wrapper
-        .find("SearchBox")
-        .find("i")
-        .simulate("click")
+      wrapper.find("SearchBox").prop("onSubmit")({ preventDefault: jest.fn() })
       resolver()
     })
     expect(search.mock.calls).toEqual([
@@ -216,7 +213,7 @@ describe("SearchPage component", () => {
       .at(0)
       .simulate("change", { target: { value: "New Search Text" } })
     await act(async () => {
-      wrapper.find("i").simulate("click")
+      wrapper.find("SearchBox").prop("onSubmit")({ preventDefault: jest.fn() })
     })
     wrapper.update()
     expect(wrapper.find("Loading").exists()).toBeTruthy()

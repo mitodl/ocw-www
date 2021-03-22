@@ -15,7 +15,6 @@ describe("SearchBox component", () => {
     expect(wrapper.find("input").prop("value")).toBe(value)
 
     expect(wrapper.find("form").prop("onSubmit")).toEqual(onSubmit)
-    // user can click on the spyglass to submit as well
-    expect(wrapper.find("i").prop("onClick")).toEqual(onSubmit)
+    expect(wrapper.find("button").prop("type")).toEqual("submit")
   })
 })

@@ -5,6 +5,7 @@ export default function SearchFilter(props) {
 
   return (
     <div className="active-search-filter">
+      <div>{labelFunction ? labelFunction(value) : value}</div>
       <div
         className="remove-filter"
         onClick={clearFacet}
@@ -17,7 +18,6 @@ export default function SearchFilter(props) {
       >
         <i className="material-icons">close</i>
       </div>
-      <div>{labelFunction ? labelFunction(value) : value}</div>
     </div>
   )
 }
