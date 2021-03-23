@@ -188,9 +188,9 @@ export default function SearchPage() {
             />
           )}
           <div className="col-12 col-lg-6 results-total pb-2">
-            <span className="pl-2">
+            <div className="pr-4 d-flex flex-direction-row justify-content-end">
               {completedInitialLoad ? `${total} Results` : null}
-            </span>
+            </div>
             <hr />
             <div
               className={`search-toggle ${
