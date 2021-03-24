@@ -27,11 +27,11 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "./static/**/*.ts",
-    "./static/**/*.tsx"
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
   ],
   "exclude": [
-    "./static/*.test.ts",
-    "./static/*.test.tsx"
+    "./src/*.test.ts",
+    "./src/*.test.tsx"
   ]
 }

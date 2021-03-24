@@ -51,6 +51,7 @@ site/data/*
 ocw-to-hugo.*.log
 *.tgz
 zips
+.tsbuildinfo
 
 # Unit test / coverage reports
 htmlcov/
