@@ -1,16 +1,16 @@
-import { buildSearchQuery } from "./search";
+import { buildSearchQuery, SearchAPIParams } from "./search"
 
-export const search = async params => {
-  const body = buildSearchQuery(params);
+export const search = async (params: SearchAPIParams) => {
+  const body = buildSearchQuery(params)
 
   const response = await fetch(process.env.SEARCH_API_URL, {
-    method: "POST",
-    body: JSON.stringify(body),
+    method:  "POST",
+    body:    JSON.stringify(body),
     headers: new Headers({
       "Content-Type": "application/json",
-      Accept: "application/json"
+      Accept:         "application/json"
     })
-  });
-  const results = await response.json();
-  return results;
-};
+  })
+  const results = await response.json()
+  return results
+}
