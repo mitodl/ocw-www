@@ -11,7 +11,8 @@ import {
   getContentIcon,
   getCoverImageUrl,
   SEARCH_GRID_UI,
-  SEARCH_LIST_UI
+  SEARCH_LIST_UI,
+  SearchResultLayout
 } from "../lib/search"
 import { emptyOrNil } from "../lib/util"
 
@@ -44,8 +45,14 @@ const CoverImage = ({ object }) => (
   </div>
 )
 
-export default function SearchResult(props) {
+interface SearchResultProps {
+  object: LearningResource
+  searchResultLayout: SearchResultLayout
+}
+
+export default function SearchResult(props: SearchResultProps) {
   const { searchResultLayout, object } = props
+
   return object.url ? (
     <Card
       className={getClassName(searchResultLayout)}
@@ -55,9 +62,16 @@ export default function SearchResult(props) {
     </Card>
   ) : null
 }
-export function LearningResourceDisplay(props) {
+
+interface LRDisplayProps {
+  object: LearningResource
+  searchResultLayout: SearchResultLayout
+}
+
+export function LearningResourceDisplay(props: LRDisplayProps) {
   const { object, searchResultLayout } = props
   const isResource = object.object_type === LR_TYPE_RESOURCEFILE
+
   return (
     <React.Fragment>
       {searchResultLayout === SEARCH_GRID_UI ? (
@@ -131,7 +145,9 @@ export function LearningResourceDisplay(props) {
                   href={`${SEARCH_URL}?${serializeSearchParams({
                     text:         undefined,
                     activeFacets: {
-                      topics: topic.name
+                      topics:   topic.name,
+                      audience: []
+
                     }
                   })}`}
                 >

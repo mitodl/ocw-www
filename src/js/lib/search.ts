@@ -1,4 +1,4 @@
-import bodybuilder from "bodybuilder"
+import bodybuilder, { Bodybuilder } from "bodybuilder"
 import { emptyOrNil } from "./util"
 import {
   LR_TYPE_COURSE,
@@ -13,6 +13,8 @@ import {
   CONTENT_TYPE_SEARCHABLE
 } from "./constants"
 import { Facets } from "@mitodl/course-search-utils/dist/url_utils"
+
+import { SearchResult, LearningResource } from '../types/Search'
 
 export const LEARN_SUGGEST_FIELDS = [
   "title.trigram",
@@ -44,7 +46,7 @@ export const LR_TYPE_ALL = [
   LR_TYPE_RESOURCEFILE
 ]
 
-export const searchFields = (type: string): string => {
+export const searchFields = (type: string): string[] => {
   if (type === LR_TYPE_COURSE) {
     return COURSE_QUERY_FIELDS
   } else if (type === LR_TYPE_VIDEO) {
@@ -107,11 +109,16 @@ const LIST_QUERY_FIELDS = [
 
 export const isDoubleQuoted = (string: string): boolean => /^".+"$/.test(string)
 
+interface SortParam {
+  field: string
+  option: string
+}
+
 interface SearchAPIParams {
   text: string
-  from: number
-  size: number
-  sort: string
+  from?: number
+  size?: number
+  sort?: SortParam
   activeFacets: Facets
 }
 
@@ -136,44 +143,44 @@ export const buildSearchQuery = ({ text, from, size, sort, activeFacets }: Searc
     const textQuery = emptyOrNil(text) ?
       {} :
       {
-        should: [
+      should: [
+        {
+          [queryType]: {
+            query:  text,
+            fields: searchFields(type)
+          }
+        },
+        type === LR_TYPE_COURSE ?
+          [
           {
-            [queryType]: {
-              query:  text,
-              fields: searchFields(type)
-            }
-          },
-          type === LR_TYPE_COURSE ?
-            [
-              {
-                nested: {
-                  path:  "runs",
-                  query: {
-                    [queryType]: {
-                      query:  text,
-                      fields: RESOURCE_QUERY_NESTED_FIELDS
-                    }
-                  }
-                }
-              },
-              {
-                has_child: {
-                  type:  "resourcefile",
-                  query: {
-                    [queryType]: {
-                      query:  text,
-                      fields: RESOURCEFILE_QUERY_FIELDS
-                    }
-                  },
-                  score_mode: "avg"
+            nested: {
+              path:  "runs",
+              query: {
+                [queryType]: {
+                  query:  text,
+                  fields: RESOURCE_QUERY_NESTED_FIELDS
                 }
               }
-            ] :
-            null
-        ]
-          .flat()
-          .filter(clause => clause !== null)
-      }
+            }
+          },
+          {
+            has_child: {
+              type:  "resourcefile",
+              query: {
+                [queryType]: {
+                  query:  text,
+                  fields: RESOURCEFILE_QUERY_FIELDS
+                }
+              },
+              score_mode: "avg"
+            }
+          }
+        ] :
+          null
+      ]
+      .flat()
+      .filter(clause => clause !== null)
+    }
     // buildFacetSubQuery
     const facets = { ...activeFacets, offered_by: [OCW_PLATFORM] }
     const facetClauses = buildFacetSubQuery(facets, builder, type)
@@ -199,7 +206,7 @@ export const buildSearchQuery = ({ text, from, size, sort, activeFacets }: Searc
   return builder.build()
 }
 
-const buildLevelQuery = (builder, values, facetClauses) => {
+const buildLevelQuery = (builder: Bodybuilder, values: string[], facetClauses) => {
   if (values && values.length > 0) {
     const facetFilter = values.map(value => ({
       nested: {
@@ -219,7 +226,7 @@ const buildLevelQuery = (builder, values, facetClauses) => {
   }
 }
 
-export const buildFacetSubQuery = (facets, builder, objectType) => {
+export const buildFacetSubQuery = (facets: Facets, builder: Bodybuilder, objectType: string) => {
   const facetClauses = []
 
   if (facets) {
@@ -262,35 +269,35 @@ export const buildFacetSubQuery = (facets, builder, objectType) => {
         if (key === "level") {
           // this is done seperately b/c it's a nested field
           builder.agg("filter", key, aggr =>
-            aggr.orFilter("bool", filter).agg(
-              "nested",
-              {
-                path: "runs"
-              },
-              "level",
-              aggr =>
-                aggr.agg(
-                  "terms",
-                  "runs.level",
-                  {
-                    size: 10000
-                  },
-                  "level",
-                  aggr => aggr.agg("reverse_nested", null, {}, "courses")
-                )
-            )
+                      aggr.orFilter("bool", filter).agg(
+                        "nested",
+                        {
+                          path: "runs"
+                        },
+                        "level",
+                        aggr =>
+                          aggr.agg(
+                            "terms",
+                            "runs.level",
+                            {
+                              size: 10000
+                            },
+                            "level",
+                            aggr => aggr.agg("reverse_nested", null, {}, "courses")
+                        )
           )
+                     )
         } else {
           builder.agg("filter", key, aggregation =>
-            aggregation.orFilter("bool", filter).agg(
-              "terms",
-              key === OBJECT_TYPE ? "object_type.keyword" : key,
-              {
-                size: 10000
-              },
-              key
-            )
+                      aggregation.orFilter("bool", filter).agg(
+                        "terms",
+                        key === OBJECT_TYPE ? "object_type.keyword" : key,
+                        {
+                          size: 10000
+                        },
+                        key
           )
+                     )
         }
       } else {
         if (key === "level") {
@@ -310,7 +317,7 @@ export const buildFacetSubQuery = (facets, builder, objectType) => {
                 },
                 "level",
                 aggr => aggr.agg("reverse_nested", null, {}, "courses")
-              )
+            )
           )
         } else {
           builder.agg(
@@ -328,30 +335,30 @@ export const buildFacetSubQuery = (facets, builder, objectType) => {
 
   return facetClauses
 }
-export const buildOrQuery = (builder, searchType, textQuery, extraClauses) => {
+export const buildOrQuery = (builder: Bodybuilder, searchType: string, textQuery: Record<string, unknown> | null, extraClauses: any[]) => {
   const textFilter = emptyOrNil(textQuery) ?
     [] :
     [
-      {
-        bool: textQuery
-      }
-    ]
+    {
+      bool: textQuery
+    }
+  ]
   // For now, only include pdfs, web pages, and videos in resource results.
   // Eventually, this may be another facet.
   const contentFilter =
     searchType !== LR_TYPE_RESOURCEFILE ?
-      [] :
-      [
-        {
-          bool: {
-            should: CONTENT_TYPE_SEARCHABLE.map(contentType => ({
-              term: {
-                content_type: contentType
-              }
-            }))
+    [] :
+    [
+    {
+      bool: {
+        should: CONTENT_TYPE_SEARCHABLE.map(contentType => ({
+          term: {
+            content_type: contentType
           }
-        }
-      ]
+        }))
+      }
+    }
+  ]
   builder = builder.orQuery("bool", {
     filter: {
       bool: {
@@ -373,7 +380,7 @@ export const buildOrQuery = (builder, searchType, textQuery, extraClauses) => {
   return builder
 }
 
-const addFacetClauseToArray = (facetClauses, facet, values, type) => {
+const addFacetClauseToArray = (facetClauses, facet, values: string[], type: string) => {
   if (
     facet === OBJECT_TYPE &&
     values.toString() === buildSearchQuery.toString()
@@ -399,7 +406,7 @@ const addFacetClauseToArray = (facetClauses, facet, values, type) => {
           parent_type: "resource",
           query:       {
             bool: {
-              should: values.map(value => ({
+              should: values.map((value: string) => ({
                 term: {
                   [filterKey]: value
                 }
@@ -418,34 +425,34 @@ const addFacetClauseToArray = (facetClauses, facet, values, type) => {
   })
 }
 
-export const buildSuggestQuery = (text, suggestFields) => {
+export const buildSuggestQuery = (text: string, suggestFields: string[]) => {
   const suggest = {
     text
   }
   suggestFields.forEach(
     field =>
       (suggest[field] = {
-        phrase: {
-          field:      `${field}`,
-          size:       5,
-          gram_size:  1,
-          confidence: 0.0001,
-          max_errors: 3,
-          collate:    {
-            query: {
-              source: {
-                match_phrase: {
-                  "{{field_name}}": "{{suggestion}}"
-                }
+      phrase: {
+        field:      `${field}`,
+        size:       5,
+        gram_size:  1,
+        confidence: 0.0001,
+        max_errors: 3,
+        collate:    {
+          query: {
+            source: {
+              match_phrase: {
+                "{{field_name}}": "{{suggestion}}"
               }
-            },
-            params: {
-              field_name: `${field}`
-            },
-            prune: true
-          }
+            }
+          },
+          params: {
+            field_name: `${field}`
+          },
+          prune: true
         }
-      })
+      }
+    })
   )
   return suggest
 }
@@ -469,8 +476,14 @@ export const buildDefaultSort = () => {
   ]
 }
 export const SEARCH_GRID_UI = "grid"
+
 export const SEARCH_LIST_UI = "list"
-export const searchResultToLearningResource = result => ({
+
+export type SearchResultLayout = 
+  | typeof SEARCH_GRID_UI
+  | typeof SEARCH_LIST_UI
+
+export const searchResultToLearningResource = (result: SearchResult): LearningResource => ({
   id:          result.id,
   title:       result.title,
   image_src:   result.image_src,
@@ -478,12 +491,12 @@ export const searchResultToLearningResource = result => ({
   platform:    "platform" in result ? result.platform : null,
   topics:      result.topics ?
     result.topics.map(topic => ({
-      name: topic
-    })) :
+    name: topic
+  })) :
     [],
   runs:                "runs" in result ? result.runs : [],
-  level:               !emptyOrNil(result.runs) ? result.runs[0].level : null,
-  instructors:         !emptyOrNil(result.runs) ? result.runs[0].instructors : [],
+  level:               result.runs && result.runs.length !== 0 ? result.runs[0].level : null,
+  instructors:         result.runs && result.runs.length !== 0 ? result.runs[0].instructors : [],
   department:          result.department,
   audience:            result.audience,
   certification:       result.certification,
@@ -500,28 +513,29 @@ export const searchResultToLearningResource = result => ({
     result.course_feature_tags :
     []
 })
-export const getCoverImageUrl = result => {
+export const getCoverImageUrl = (result: SearchResult): string => {
   if (!emptyOrNil(result.image_src)) {
+    // @ts-ignore
     return result.image_src
   } else {
     return `/images/${result.content_type}_thumbnail.png`
   }
 }
-export const getCourseUrl = result => {
+export const getCourseUrl = (result: SearchResult): string | null => {
   if (emptyOrNil(result.runs)) {
     return null
   }
 
-  const publishedRuns = result.runs.filter(run => run.published)
+  const publishedRuns = result.runs!.filter(run => run.published)
   return !emptyOrNil(publishedRuns) ?
     `/courses/${
-      publishedRuns.sort((a, b) =>
-        a.best_start_date < b.best_start_date ? 1 : -1
-      )[0].slug
-    }/` :
+    publishedRuns.sort((a, b) =>
+                       a.best_start_date < b.best_start_date ? 1 : -1
+                      )[0].slug
+  }/` :
     null
 }
-export const getResourceUrl = result => {
+export const getResourceUrl = (result: SearchResult) => {
   if (result.content_type === CONTENT_TYPE_PAGE) {
     // Formulate URL based on run slug and short url
     const shortUrl = result.short_url ? `sections/${result.short_url}/` : ""
@@ -539,23 +553,23 @@ export const getResourceUrl = result => {
     }
   }
 }
-export const getResultUrl = result =>
+export const getResultUrl = (result: SearchResult) =>
   result.object_type === LR_TYPE_COURSE ?
-    getCourseUrl(result) :
-    getResourceUrl(result)
+  getCourseUrl(result) :
+  getResourceUrl(result)
 
 export const getContentIcon = (contentType: string): string => {
   switch (contentType) {
-  case CONTENT_TYPE_PDF:
-    return "picture_as_pdf"
+    case CONTENT_TYPE_PDF:
+      return "picture_as_pdf"
 
-  case CONTENT_TYPE_VIDEO:
-    return "theaters"
+    case CONTENT_TYPE_VIDEO:
+      return "theaters"
 
-  case CONTENT_TYPE_PAGE:
-    return "web"
+    case CONTENT_TYPE_PAGE:
+      return "web"
 
-  default:
-    return "file_copy"
+    default:
+      return "file_copy"
   }
 }
