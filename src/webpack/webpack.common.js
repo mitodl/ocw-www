@@ -41,14 +41,19 @@ module.exports = {
       },
 
       { test: /\.json$/, loader: "json-loader" },
+        {
+          test: /\.tsx?$/,
+          use: "ts-loader",
+          exclude: /node_modules/
+        },
 
-      {
-        test:    /\.js$/,
-        exclude: /(node_modules)/,
-        use:     {
-          loader: "babel-loader"
-        }
-      },
+//       {
+//         test:    /\.js$/,
+//         exclude: /(node_modules)/,
+//         use:     {
+//           loader: "babel-loader"
+//         }
+//       },
 
       {
         test: /\.(sa|sc|c)ss$/,
