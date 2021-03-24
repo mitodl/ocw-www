@@ -147,7 +147,6 @@ export function LearningResourceDisplay(props: LRDisplayProps) {
                     activeFacets: {
                       topics:   topic.name,
                       audience: []
-
                     }
                   })}`}
                 >

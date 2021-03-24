@@ -10,17 +10,15 @@ export interface SearchResult {
   platform?: string
   topics?: string[]
   department: string
-  audience:            string
-  certification:       string
-  content_title:       string
-  run_title?:           string
+  audience: string
+  certification: string
+  content_title: string
+  run_title?: string
   course_id?: string
   short_description?: string
   coursenum?: string
   course_feature_tags?: string[]
   url: string
-
-
 }
 
 export interface CourseRun {
