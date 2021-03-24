@@ -26,14 +26,11 @@ a {
 
 .search-box-description {
   font-size: 1rem;
+  letter-spacing: 0.8px;
 }
 
 .results-total {
-  font-size: 1rem;
-
-  hr {
-    background-color: $text-box-border;
-  }
+  font-size: 14px;
 }
 
 form.search-box {
@@ -43,6 +40,7 @@ form.search-box {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     height: 50px;
     background-color: $text-box-background;
+    letter-spacing: 0.54px;
   }
 
   button {
@@ -91,10 +89,22 @@ form.search-box {
       padding: 13px;
     }
   }
+
+  h1 {
+    font-size: 34px;
+  }
 }
 
 .search-toggle {
   margin-left: -15px;
+  &,
+  button {
+    color: $text-gray;
+  }
+
+  .suggestions {
+    color: black;
+  }
 }
 
 .search-filter-drawer-open {

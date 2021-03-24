@@ -54,6 +54,10 @@ $desktop-header-max-width: 1664px;
       a {
         font-size: 14px;
         text-transform: uppercase;
+
+        &.orange-link {
+          font-size: 1rem;
+        }
       }
     }
   }

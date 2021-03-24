@@ -158,7 +158,7 @@ export default function SearchPage() {
         <div className="search-box py-sm-5 py-md-7 py-lg-5 row">
           <div className="col-lg-3" />
           <div className="col-lg-6 search-box-inner d-flex flex-column align-items-center">
-            <h1 className="mb-3 mb-sm-5 mb-md-7">Explore OpenCourseWare</h1>
+            <h1 className="mb-2 mb-sm-5 mb-md-4">Explore OpenCourseWare</h1>
             <div className="w-100 d-flex flex-column align-items-center search-input-wrapper">
               <span className="align-self-start pb-1 pb-sm-3 search-box-description px-2">
                 Search for courses, materials & teaching resources
@@ -187,11 +187,7 @@ export default function SearchPage() {
               toggleFacet={toggleFacet}
             />
           )}
-          <div className="col-12 col-lg-6 results-total pb-2">
-            <div className="pr-4 d-flex flex-direction-row justify-content-end">
-              {completedInitialLoad ? `${total} Results` : null}
-            </div>
-            <hr />
+          <div className="col-12 col-lg-6 pb-2">
             <div
               className={`search-toggle ${
                 isResourceSearch ? "nofacet" : "facet"
@@ -225,8 +221,8 @@ export default function SearchPage() {
                   ?
                 </div>
               ) : null}
-              <ul className="nav pl-2 pb-2">
-                <li className="nav-item">
+              <ul className="nav pl-2 pb-2 d-flex flex-direction-row">
+                <li className="nav-item flex-grow-0">
                   <button
                     className={`nav-link search-nav ${
                       isResourceSearch ? "" : "active"
@@ -236,7 +232,7 @@ export default function SearchPage() {
                     Courses
                   </button>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item flex-grow-0">
                   <button
                     className={`nav-link search-nav ${
                       isResourceSearch ? "active" : ""
@@ -245,6 +241,9 @@ export default function SearchPage() {
                   >
                     Resources
                   </button>
+                </li>
+                <li className="nav-item flex-grow-1 d-flex align-items-center justify-content-center results-total">
+                  {completedInitialLoad ? `${total} Results` : null}
                 </li>
               </ul>
             </div>
