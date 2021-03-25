@@ -4,17 +4,17 @@ export default function SearchBox(props) {
   const { value, onChange, onSubmit } = props
 
   return (
-    <form onSubmit={onSubmit} className="search-box">
+    <form onSubmit={onSubmit} className="search-box d-flex flex-direction-row">
       <input
-        className="w-100 pl-5"
+        className="w-100 pl-2"
         type="text"
         onChange={onChange}
         value={value ?? ""}
         placeholder="Enter Course Name, Department, Course Number..."
       />
-      <i onClick={onSubmit} className="material-icons position-absolute">
-        search
-      </i>
+      <button type="submit" className="py-2 px-3">
+        Search
+      </button>
     </form>
   )
 }

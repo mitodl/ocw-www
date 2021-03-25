@@ -6,57 +6,56 @@
 @import "card";
 @import "search-filter";
 
+a {
+  color: black;
+}
+
 .search-nav {
   background-color: transparent;
   border: initial;
 
   &.active {
+    color: $blue;
     font-weight: bold;
   }
 
-  font-size: 20px;
+  font-size: 1rem;
   text-decoration: none !important;
+  text-transform: uppercase;
 }
 
-.search-box {
-  .search-box-inner {
-    max-width: 800px;
+.search-box-description {
+  font-size: 1rem;
+  letter-spacing: 0.8px;
+}
 
-    .search-input-wrapper {
-      max-width: 580px;
-    }
-  }
+.results-total {
+  font-size: 14px;
 }
 
 form.search-box {
   input {
-    border: 1px solid $border-light-color;
-    height: 60px;
-
-    &::placeholder {
-      line-height: revert !important;
-    }
+    border: 1px solid $text-box-border;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    height: 50px;
+    background-color: $text-box-background;
+    letter-spacing: 0.54px;
   }
 
-  // using a button on home page, to avoid JS
   button {
-    background: none;
-    border: none;
-  }
-
-  i.material-icons,
-  button {
-    position: absolute;
-    top: 29%;
-    left: 15px;
-    color: $font-gray-mid;
-    cursor: pointer;
+    background-color: $blue;
+    border: 0;
+    border-radius: 0 5px 5px 0;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
   }
 }
 
 .search-page {
-  .search-results {
-    max-width: 800px;
+  .container {
+    max-width: $max-content-width;
   }
 
   a {
@@ -82,10 +81,30 @@ form.search-box {
       cursor: pointer;
     }
   }
+
+  .card {
+    border-color: $border-dark-color;
+
+    .card-contents {
+      padding: 13px;
+    }
+  }
+
+  h1 {
+    font-size: 34px;
+  }
 }
 
 .search-toggle {
   margin-left: -15px;
+  &,
+  button {
+    color: $text-gray;
+  }
+
+  .suggestions {
+    color: black;
+  }
 }
 
 .search-filter-drawer-open {
@@ -139,6 +158,5 @@ form.search-box {
   .topic-link {
     float: left;
     white-space: nowrap;
-    text-decoration: underline !important;
   }
 }

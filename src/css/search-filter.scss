@@ -87,38 +87,8 @@
       color: black;
     }
 
-    .facet-key-large {
-      font-size: 16;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: $featured-facet-blue;
-      padding: 5px;
-    }
-
     .facet-count {
       color: $font-gray-mid;
-    }
-
-    &.checked {
-      font-size: 16px;
-      font-weight: bold;
-
-      .facet-key,
-      .facet-count {
-        color: $blue;
-      }
-    }
-
-    @include breakpoint(desktop) {
-      &:hover {
-        font-size: 16px;
-        font-weight: bold;
-
-        .facet-key,
-        .facet-count {
-          color: $blue;
-        }
-      }
     }
   }
 
@@ -130,15 +100,21 @@
   }
 }
 
+.facet-display-wrapper {
+  @include breakpoint(desktop) {
+    padding-right: 75px;
+  }
+}
+
 .active-search-filters {
-  border-bottom: 1px solid $font-gray-mid;
   padding-bottom: 10px;
   margin-bottom: 10px;
 
   .clear-all-filters {
-    font-size: 14px;
-    color: $search-gray;
+    font-size: 18px;
+    color: $blue;
     font-weight: normal;
+    text-decoration: underline;
   }
 
   .active-search-filter {
