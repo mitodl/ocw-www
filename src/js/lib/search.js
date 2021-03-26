@@ -36,18 +36,6 @@ export const RESOURCEFILE_QUERY_FIELDS = [
   "resource_type"
 ]
 
-export const LR_TYPE_ALL = [
-  LR_TYPE_COURSE,
-  LR_TYPE_VIDEO,
-  LR_TYPE_PODCAST,
-  LR_TYPE_PODCAST_EPISODE,
-  LR_TYPE_RESOURCEFILE
-]
-
-export const TYPE_FACET_MAP = {
-  LR_TYPE_COURSE: []
-}
-
 export const searchFields = type => {
   if (type === LR_TYPE_COURSE) {
     return COURSE_QUERY_FIELDS
