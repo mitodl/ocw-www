@@ -189,6 +189,100 @@ describe("search library", () => {
     })
   })
 
+  it("should include an appropriate resource query and aggregation for resource_type ", () => {
+    // eslint-disable-next-line camelcase
+    const { query, post_filter, aggs } = buildSearchQuery({
+      text:         "",
+      activeFacets: {
+        ...INITIAL_FACET_STATE,
+        resource_type: ["Exams"],
+        type:          [LR_TYPE_RESOURCEFILE]
+      }
+    })
+
+    expect(query).toStrictEqual({
+      bool: {
+        should: [
+          {
+            bool: {
+              filter: {
+                bool: {
+                  must: [
+                    {
+                      term: {
+                        object_type: LR_TYPE_RESOURCEFILE
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    })
+
+    expect(aggs.agg_filter_resource_type.aggs).toStrictEqual({
+      resource_type: {
+        terms: {
+          field: "resource_type",
+          size:  10000
+        }
+      }
+    })
+
+    expect(post_filter).toStrictEqual({
+      bool: {
+        must: [
+          {
+            bool: {
+              should: [
+                {
+                  has_parent: {
+                    parent_type: "resource",
+                    query:       {
+                      bool: {
+                        should: [
+                          {
+                            term: {
+                              offered_by: "OCW"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            bool: {
+              should: [
+                {
+                  term: {
+                    "object_type.keyword": LR_TYPE_RESOURCEFILE
+                  }
+                }
+              ]
+            }
+          },
+          {
+            bool: {
+              should: [
+                {
+                  term: {
+                    resource_type: "Exams"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    })
+  })
+
   it("should include suggest query, if text", () => {
     expect(
       buildSearchQuery({ text: "text!", activeFacets }).suggest

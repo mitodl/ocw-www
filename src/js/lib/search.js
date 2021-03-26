@@ -10,8 +10,7 @@ import {
   OCW_PLATFORM,
   CONTENT_TYPE_PAGE,
   CONTENT_TYPE_PDF,
-  CONTENT_TYPE_VIDEO,
-  CONTENT_TYPE_SEARCHABLE
+  CONTENT_TYPE_VIDEO
 } from "./constants"
 
 export const LEARN_SUGGEST_FIELDS = [
@@ -33,7 +32,8 @@ export const RESOURCEFILE_QUERY_FIELDS = [
   "content",
   "title",
   "short_description",
-  "department_name"
+  "department_name",
+  "resource_type"
 ]
 
 export const LR_TYPE_ALL = [
@@ -43,6 +43,10 @@ export const LR_TYPE_ALL = [
   LR_TYPE_PODCAST_EPISODE,
   LR_TYPE_RESOURCEFILE
 ]
+
+export const TYPE_FACET_MAP = {
+  LR_TYPE_COURSE: []
+}
 
 export const searchFields = type => {
   if (type === LR_TYPE_COURSE) {
@@ -312,23 +316,6 @@ export const buildFacetSubQuery = (facets, builder, objectType) => {
 export const buildOrQuery = (builder, searchType, textQuery, extraClauses) => {
   const textFilter = emptyOrNil(textQuery) ? [] : [{ bool: textQuery }]
 
-  // For now, only include pdfs, web pages, and videos in resource results.
-  // Eventually, this may be another facet.
-  const contentFilter =
-    searchType !== LR_TYPE_RESOURCEFILE ?
-      [] :
-      [
-        {
-          bool: {
-            should: CONTENT_TYPE_SEARCHABLE.map(contentType => ({
-              term: {
-                content_type: contentType
-              }
-            }))
-          }
-        }
-      ]
-
   builder = builder.orQuery("bool", {
     filter: {
       bool: {
@@ -338,7 +325,6 @@ export const buildOrQuery = (builder, searchType, textQuery, extraClauses) => {
               object_type: searchType
             }
           },
-          ...contentFilter,
           ...extraClauses,
           // Add multimatch text query here to filter out non-matching results
           ...textFilter
