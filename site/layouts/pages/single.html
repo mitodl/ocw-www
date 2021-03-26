@@ -1,0 +1,11 @@
+{{ define "main" }}
+<div class="overflow-auto">
+  {{ block "header" . }}
+  {{ partialCached "header" . }}
+  {{ partialCached "header_placeholder.html" . }}
+  {{end}}
+  <div class="generic-single container standard-width mx-auto mt-5">
+  {{ .Content }}
+  </div>
+</div>
+{{ end }}
