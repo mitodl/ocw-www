@@ -3,3 +3,5 @@
 title: "{{ $name }}"
 date: {{ .Date }}
 ---
+
+**Insert content here**
