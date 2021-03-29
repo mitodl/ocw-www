@@ -12,6 +12,7 @@ import SearchPage from "./js/components/SearchPage"
 
 import { initSentry } from "./js/sentry"
 import { setupEmailSignupForm } from "./js/mailchimp"
+import { initNotifications, onNotificationClose } from "./js/notification"
 
 window.jQuery = $
 window.$ = $
@@ -26,6 +27,10 @@ $(document).ready(() => {
       placement: "top"
     })
   })
+
+  // init notifications and attach close listener
+  initNotifications()
+  $(".notification-close").on("click", onNotificationClose)
 
   const searchPageEl = document.querySelector("#search-page")
   if (searchPageEl) {

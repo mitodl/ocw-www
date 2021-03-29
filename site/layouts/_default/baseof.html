@@ -9,7 +9,8 @@
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- End Google Tag Manager (noscript) -->
     {{ end }}
-    <div class="overflow-auto">
+    <div>
+      {{ block "notification" . }}{{ partial "notification" . }}{{ end }}
       {{ block "main" . }}{{ end }}
     </div>
     {{ $main := .Site.Data.webpack.main }}
