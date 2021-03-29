@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.9.0
+Version 1.9.0 (Released March 29, 2021)
 -------------
 
 - New facet for course feature tags (#60)
