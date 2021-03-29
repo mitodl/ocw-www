@@ -1,6 +1,6 @@
 {{- range ( where site.RegularPages "Section" "notifications" | first 1 ) -}}
 {{- if isset .Params "id" -}}
-<div id="notification_{{ .Params.id }}" class="notification d-none bg-blue py-4">
+<div id="notification_{{ .Params.id }}" class="notification d-none bg-blue">
   <div class="notification-message">
     {{ .Content }}
   </div>
