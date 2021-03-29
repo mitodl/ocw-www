@@ -1,6 +1,12 @@
 Release Notes
 =============
 
+Version 1.9.0 (Released March 29, 2021)
+-------------
+
+- New facet for course feature tags (#60)
+- Remove testimonial hover (#61)
+
 Version 1.8.0 (Released March 10, 2021)
 -------------
 
