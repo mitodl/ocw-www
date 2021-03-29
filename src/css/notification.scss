@@ -1,5 +1,6 @@
 .notification {
   position: sticky;
+  background-color: $orange;
   color: $white;
   top: 0;
   z-index: 999;
@@ -21,7 +22,7 @@
     }
 
     a {
-      color: $orange;
+      color: $blue;
     }
   }
 
