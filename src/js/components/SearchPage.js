@@ -22,11 +22,11 @@ export const SEARCH_PAGE_SIZE = 10
 const COURSE_FACETS = [
   ["level", "Level", false],
   ["topics", "Topics", true],
-  ["course_feature_tags", "Course Features", true],
-  ["department_name", "Department", true]
+  ["course_feature_tags", "Features", true],
+  ["department_name", "Departments", true]
 ]
 
-const RESOURCE_FACETS = [["resource_type", "Resource Type", true]]
+const RESOURCE_FACETS = [["resource_type", "Resource Types", true]]
 
 export default function SearchPage() {
   const [results, setSearchResults] = useState([])
