@@ -30,7 +30,6 @@ $(document).ready(() => {
 
   // init notifications and attach close listener
   initNotifications()
-  $(".notification-close").on("click", onNotificationClose)
 
   const searchPageEl = document.querySelector("#search-page")
   if (searchPageEl) {
