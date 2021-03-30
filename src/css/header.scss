@@ -16,9 +16,6 @@ $desktop-header-max-width: 1664px;
   height: $desktop-header-height;
   width: 100%;
   position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 
   @include media-breakpoint-down(md) {
     display: none;
@@ -27,11 +24,9 @@ $desktop-header-max-width: 1664px;
   .contents {
     display: flex;
     justify-content: space-between;
-    max-width: $desktop-header-max-width;
-    width: 100%;
+    max-width: $max-content-width;
     margin: auto;
     height: 100%;
-    background-color: black;
 
     .right,
     .left {
@@ -54,9 +49,29 @@ $desktop-header-max-width: 1664px;
       a {
         font-size: 14px;
         text-transform: uppercase;
+      }
+    }
+  }
+}
 
-        &.orange-link {
-          font-size: 1rem;
+.search-wrapper {
+  #desktop-header {
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .contents {
+        width: 100%;
+        max-width: $desktop-header-max-width;
+        background-color: black;
+
+        .right {
+          a {
+            &.orange-link {
+              font-size: 1rem;
+            }
+          }
         }
       }
     }
