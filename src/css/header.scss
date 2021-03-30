@@ -9,9 +9,6 @@
   }
 }
 
-$desktop-header-height: 116px;
-$desktop-header-max-width: 1664px;
-
 #desktop-header {
   height: $desktop-header-height;
   width: 100%;
@@ -75,15 +72,6 @@ $desktop-header-max-width: 1664px;
         }
       }
     }
-  }
-}
-
-#course-banner {
-  color: $white;
-  background-color: $blue;
-
-  a {
-    text-decoration: none;
   }
 }
 
