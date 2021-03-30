@@ -1,6 +1,15 @@
 Release Notes
 =============
 
+Version 1.10.0
+--------------
+
+- Add resource_type facet for resource search and remove content_type filter (#70)
+- add default content so page is visible as soon as you create it
+- add generic page layout
+- Updates to search page design (#67)
+- Mail signup will redirect to legacy signup form (#65)
+
 Version 1.9.0 (Released March 29, 2021)
 -------------
 
