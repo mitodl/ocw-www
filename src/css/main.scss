@@ -16,6 +16,8 @@
 @import "pdf";
 @import "video";
 @import "spinner";
+@import "notification";
+@import "pages";
 
 a.coming-soon {
   cursor: pointer;
@@ -25,6 +27,7 @@ a.coming-soon {
 
 body {
   font-family: "Helvetica";
+  font-size: 16px;
 }
 
 blockquote {

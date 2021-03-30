@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ $pages := .Site.RegularPages }}
 {{ $testimonials := where $pages "Type" "==" "testimonials" }}
-<div class="overflow-auto">
+<div>
   {{ block "header" . }}
   {{ partialCached "header" . }}
   {{ partialCached "header_placeholder.html" . }}
