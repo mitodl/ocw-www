@@ -51,7 +51,8 @@
   }
 }
 
-.search-wrapper {
+.search-wrapper,
+.page-single {
   #desktop-header {
     @include media-breakpoint-up(lg) {
       display: flex;

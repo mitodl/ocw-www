@@ -12,7 +12,7 @@ import SearchPage from "./js/components/SearchPage"
 
 import { initSentry } from "./js/sentry"
 import { setupEmailSignupForm } from "./js/mailchimp"
-import { initNotifications, onNotificationClose } from "./js/notification"
+import { initNotifications } from "./js/notification"
 
 window.jQuery = $
 window.$ = $
