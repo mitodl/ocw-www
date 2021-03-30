@@ -22,12 +22,11 @@ export const SEARCH_PAGE_SIZE = 10
 const COURSE_FACETS = [
   ["level", "Level", false],
   ["topics", "Topics", true],
-  ["course_feature_tags", "Course Features", true],
-  ["department_name", "Department", true]
+  ["course_feature_tags", "Features", true],
+  ["department_name", "Departments", true]
 ]
 
-// TBD
-const RESOURCE_FACETS = []
+const RESOURCE_FACETS = [["resource_type", "Resource Types", true]]
 
 export default function SearchPage() {
   const [results, setSearchResults] = useState([])
@@ -175,18 +174,14 @@ export default function SearchPage() {
           <div className="col-lg-3" />
         </div>
         <div className="row">
-          {isResourceSearch ? (
-            <div className="col-12 col-lg-3" />
-          ) : (
-            <SearchFilterDrawer
-              facetMap={facetMap}
-              facetOptions={facetOptions}
-              activeFacets={activeFacets}
-              onUpdateFacets={onUpdateFacets}
-              clearAllFilters={clearAllFilters}
-              toggleFacet={toggleFacet}
-            />
-          )}
+          <SearchFilterDrawer
+            facetMap={facetMap}
+            facetOptions={facetOptions}
+            activeFacets={activeFacets}
+            onUpdateFacets={onUpdateFacets}
+            clearAllFilters={clearAllFilters}
+            toggleFacet={toggleFacet}
+          />
           <div className="col-12 col-lg-6 pb-2">
             <div
               className={`search-toggle ${
