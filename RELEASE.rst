@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+Version 1.10.1
+--------------
+
+- fix header background width (#81)
+
 Version 1.10.0 (Released March 31, 2021)
 --------------
 
