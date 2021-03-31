@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.10.0
+Version 1.10.0 (Released March 31, 2021)
 --------------
 
 - add notification archetype and templates (#73)
