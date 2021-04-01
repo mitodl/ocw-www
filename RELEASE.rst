@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.10.2
+Version 1.10.2 (Released April 01, 2021)
 --------------
 
 - Revert "Add resource_type facet for resource search and remove content_type filter (#70)"
