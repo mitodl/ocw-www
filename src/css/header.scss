@@ -12,7 +12,10 @@
 #desktop-header {
   height: $desktop-header-height;
   width: 100%;
-  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: black;
 
   @include media-breakpoint-down(md) {
     display: none;
@@ -23,6 +26,7 @@
     justify-content: space-between;
     max-width: $max-content-width;
     margin: auto;
+    width: 100%;
     height: 100%;
 
     .right,
@@ -46,33 +50,19 @@
       a {
         font-size: 14px;
         text-transform: uppercase;
+
+        &.orange-link {
+          font-size: 1rem;
+        }
       }
     }
   }
 }
 
-.search-wrapper,
-.page-single {
+#home-header {
   #desktop-header {
-    @include media-breakpoint-up(lg) {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      background-color: black;
-
-      .contents {
-        width: 100%;
-        max-width: $desktop-header-max-width;
-
-        .right {
-          a {
-            &.orange-link {
-              font-size: 1rem;
-            }
-          }
-        }
-      }
-    }
+    position: absolute;
+    background-color: transparent;
   }
 }
 
