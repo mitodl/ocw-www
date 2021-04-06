@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+Version 1.11.0
+--------------
+
+- apply transparent backround and absolute positioning to home page header only, make consistent for all other pages (#88)
+
 Version 1.10.3 (Released April 05, 2021)
 --------------
 
