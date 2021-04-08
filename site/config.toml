@@ -14,3 +14,13 @@ disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 [caches.getjson]
 # set getJSON cache age small enough to refresh on every build but large enough to cache usefully within a build
 maxAge = "5m"
+
+[module]
+  [[module.imports]]
+    path = "github.com/mitodl/ocw-hugo-theme"
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
