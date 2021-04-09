@@ -65,11 +65,3 @@
     background-color: transparent;
   }
 }
-
-.header-placeholder {
-  height: $desktop-header-height;
-
-  @include media-breakpoint-down(md) {
-    display: none;
-  }
-}
