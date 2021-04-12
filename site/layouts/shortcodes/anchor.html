@@ -1,3 +1,0 @@
-{{ $name := .Get 0 }}
-{{ $href := .Get 1 }}
-<a{{ if $name }} name="{{ $name }}"{{ end }}{{ if $href }} href="{{ $href }}"{{ end }}>{{ .Inner }}</a>
