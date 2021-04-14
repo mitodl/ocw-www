@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.12.0
+Version 1.12.0 (Released April 14, 2021)
 --------------
 
 - remove header_placeholder (#92)
