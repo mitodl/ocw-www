@@ -1,6 +1,8 @@
 baseURL = "http://localhost:3000/"
 languageCode = "en-us"
 title = "MIT OpenCourseWare"
+relativeURLs = false
+enableRobotsTXT = true
 
 [module]
   [[module.imports]]
@@ -22,3 +24,8 @@ title = "MIT OpenCourseWare"
   [[module.mounts]]
     source = "static"
     target = "static"
+
+[caches]
+[caches.getjson]
+# set getJSON cache age small enough to refresh on every build but large enough to cache usefully within a build
+maxAge = "5m"
