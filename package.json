@@ -1,0 +1,11 @@
+{
+  "name": "ocw-www",
+  "version": "1.12.0",
+  "description": "A Hugo content repository for OCW website content",
+  "repository": "mitodl/ocw-www",
+  "scripts": {
+  },
+  "license": "BSD-3-CLAUSE",
+  "dependencies": {
+  }
+}
