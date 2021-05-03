@@ -1,0 +1,2 @@
+# Make sure errors with getJSON don't stop the build
+ignoreErrors = ["error-remote-getjson"]
