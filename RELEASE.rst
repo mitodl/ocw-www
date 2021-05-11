@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.12.1
+Version 1.12.1 (Released May 11, 2021)
 --------------
 
 - remove dev baseurl from the config (#112)
