@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+Version 1.12.2
+--------------
+
+- adjust PR template
+
 Version 1.12.1 (Released May 11, 2021)
 --------------
 

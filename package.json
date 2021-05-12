@@ -1,6 +1,6 @@
 {
   "name": "ocw-www",
-  "version": "1.12.1",
+  "version": "1.12.2",
   "description": "A Hugo content repository for OCW website content",
   "repository": "mitodl/ocw-www",
   "scripts": {},
