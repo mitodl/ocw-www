@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.12.3
+Version 1.12.3 (Released May 14, 2021)
 --------------
 
 - Add alt text field for promo items (#115)
