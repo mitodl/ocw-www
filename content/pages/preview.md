@@ -1,5 +1,5 @@
 ---
-title: "Welcome to the NextGen OCW beta site!"
+title: "Welcome to the NextGen OCW preview site!"
 date: 2021-03-29T17:28:59-04:00
 ---
 #### **As we develop our new platform for MIT OpenCourseWare, you can help us make it better by exploring this preview site and giving us feedback.**
