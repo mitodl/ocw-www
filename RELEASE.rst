@@ -1,6 +1,12 @@
 Release Notes
 =============
 
+Version 1.12.4
+--------------
+
+- remove the search placeholder (#119)
+- id to uid (#120)
+
 Version 1.12.3 (Released May 14, 2021)
 --------------
 
