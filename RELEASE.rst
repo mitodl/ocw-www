@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.12.4
+Version 1.12.4 (Released June 28, 2021)
 --------------
 
 - remove the search placeholder (#119)
