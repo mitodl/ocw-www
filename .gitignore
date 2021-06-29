@@ -39,6 +39,7 @@ wheels/
 MANIFEST
 public/
 resources/
+!content/resources
 node_modules
 yarn-debug.log*
 yarn-error.log*
