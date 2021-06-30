@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+Version 1.12.5
+--------------
+
+- update this repo with the content output from ocw-studio (#122)
+
 Version 1.12.4 (Released June 28, 2021)
 --------------
 
