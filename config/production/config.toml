@@ -1,0 +1,2 @@
+# Make sure errors stop the build
+ignoreErrors = []
