@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.13.0
+Version 1.13.0 (Released August 02, 2021)
 --------------
 
 - add an explicit production config that explicitly does not ignore errors (#124)
