@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+Version 1.13.1
+--------------
+
+- add instructors (#127)
+
 Version 1.13.0 (Released August 02, 2021)
 --------------
 
