@@ -1,6 +1,11 @@
 Release Notes
 =============
 
+Version 1.13.2
+--------------
+
+- add JSON media types and outputs (#130)
+
 Version 1.13.1 (Released September 03, 2021)
 --------------
 
