@@ -29,3 +29,9 @@ enableRobotsTXT = true
 [caches.getjson]
 # set getJSON cache age small enough to refresh on every build but large enough to cache usefully within a build
 maxAge = "5m"
+
+[mediaTypes."application/json"]
+suffixes = [ "json" ]
+
+[outputs]
+page = [ "HTML", "JSON" ]
