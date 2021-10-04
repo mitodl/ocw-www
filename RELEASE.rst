@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.14.0
+Version 1.14.0 (Released October 04, 2021)
 --------------
 
 - remove bad notification (#134)
