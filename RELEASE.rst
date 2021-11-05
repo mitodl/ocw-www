@@ -1,6 +1,12 @@
 Release Notes
 =============
 
+Version 1.15.0
+--------------
+
+- Create README.md with testing instructions (#138)
+- Make link relative to site (#137)
+
 Version 1.14.0 (Released October 04, 2021)
 --------------
 
