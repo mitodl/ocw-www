@@ -1,7 +1,7 @@
 Release Notes
 =============
 
-Version 1.15.0
+Version 1.15.0 (Released November 08, 2021)
 --------------
 
 - Create README.md with testing instructions (#138)
